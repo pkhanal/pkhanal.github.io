@@ -138,7 +138,7 @@
 
 <p></p>
 
-<p>For each Service class (TextToSpeech, LanguageTranslator, SpeechToText&hellip;) now has <strong><code>.rx()</code></strong> that returns <strong><code>CompletableFuture</code></strong>. <code>CompletableFuture</code> provides powerful APIs to build asynchronous system.</p>
+<p>For each Service class (TextToSpeech, LanguageTranslator, SpeechToText&hellip;) now has <strong><code>.rx()</code></strong> method that returns <strong><code>CompletableFuture</code></strong>. <code>CompletableFuture</code> provides powerful APIs to build asynchronous system.</p>
 
 <p>Let us consider a scenario and try to achive that using Reactive Watson API. Let&rsquo;s say we want to achieve following use cases in our cognitive system:</p>
 
@@ -170,7 +170,7 @@
 </code></pre></div>
 
 
-<p>Although it may look intimidating at first glance but it actually makes more sense once we get to know the Reactive API and what it does. On line <strong>11</strong>, we are grabbing the <code>CompletableFuture</code> for the translation operation and we are chaining it with the text to speech API on line <strong>13</strong>. Once the translation result is available, it is passed to the text to speech operation. <code>thenApply</code> is used to pass in the result from one asynchronous operation to another operation. On line <strong>11</strong>, we are grabbing the translated text from the result object of the translation and passing it to the text to speech operation. Finally, we use the <strong>thenAccept</strong> to mark an end of chaining which tells that we are now ready to consume the result.</p>
+<p>Although it may look intimidating at first glance but it actually makes more sense once we get to know the Reactive API and what it does. On line <strong>11</strong>, we are grabbing the <code>CompletableFuture</code> for the translation operation and we are chaining it with the text to speech API on line <strong>13</strong>. Once the translation result is available, it is passed to the text to speech operation. <code>thenApply</code> is used to pass in the result from one asynchronous operation to another operation. On line <strong>11</strong>, we are grabbing the translated text from the result object of the translation and passing it to the text to speech operation. Finally, we use <code>thenAccept</code> to mark an end of chaining which tells that we are now ready to consume the result.</p>
 
 <p>On line <strong>14</strong>, <code>App::processSpeechSynthesis</code> is a reference to the method that handles the result of speech synthesis. Method reference is a feature introduced in Java 8 that allows us to reference constructors or methods without executing them. <code>processSpeechSynthesis</code> is a static method that plays the audio data receivied from text to speech service.</p>
 
