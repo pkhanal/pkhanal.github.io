@@ -380,7 +380,9 @@ Another best practice shown here is that the messages that ImageClassifier recei
 GET    /imageClassification         controllers.VisualRecognitionController.classifyImage(imageUrl:String)
 </code></pre>
 
-<h3 id="test-rest-endpoint-with-curl-command">Test RESt endpoint with curl command</h3>
+<p>Here we have created a REST endpoint <code>/imageClassification</code> that can be accessed by <code>GET</code> method and it requires a query parameter called <code>imageUrl</code>. For more details on routing, you can read the following <a href="https://www.playframework.com/documentation/2.6.x/JavaRouting">doc</a>.</p>
+
+<h3 id="test-rest-endpoint-with-curl-command">Test REST endpoint with curl command</h3>
 
 <p>Now we can run the play application and test image classification REST endpoint through following command:</p>
 
