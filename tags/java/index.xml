@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>prashantkhanal@gmail.com (Prashant Khanal)</managingEditor>
     <webMaster>prashantkhanal@gmail.com (Prashant Khanal)</webMaster>
-    <lastBuildDate>Thu, 25 May 2017 19:10:32 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 28 Jun 2017 20:47:03 -0700</lastBuildDate>
     
 	<atom:link href="https://pkhanal.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Add Cognitive Capability into Akka Play Application</title>
+      <link>https://pkhanal.github.io/post/add-cognitive-capability-to-play-application/</link>
+      <pubDate>Wed, 28 Jun 2017 20:47:03 -0700</pubDate>
+      <author>prashantkhanal@gmail.com (Prashant Khanal)</author>
+      <guid>https://pkhanal.github.io/post/add-cognitive-capability-to-play-application/</guid>
+      <description>&lt;p&gt;As a Software Engineer and Dev Advocate for IBM Cloud and Watson platform, we are always looking for new ways to build cloud-native cognitive solution leveraging IBM Watson Platform in collaboration with external technologies. I am really excited about this morning’s &lt;a href=&#34;https://developer.ibm.com/dwblog/2017/ibm-lightbend-scala/&#34;&gt;&lt;u&gt;announcement&lt;/u&gt;&lt;/a&gt; from IBM regarding a new collaborative development initiative with &lt;a href=&#34;https://www.lightbend.com/&#34;&gt;&lt;u&gt;Lightbend&lt;/u&gt;&lt;/a&gt;. The joint effort will provide developers a single stop solution for building and deploying distributed cognitive application both on premises and in the cloud.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Reactive Cognitive API</title>

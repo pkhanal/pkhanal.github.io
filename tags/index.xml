@@ -7,15 +7,24 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>prashantkhanal@gmail.com (Prashant Khanal)</managingEditor>
     <webMaster>prashantkhanal@gmail.com (Prashant Khanal)</webMaster>
-    <lastBuildDate>Thu, 25 May 2017 19:10:32 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 28 Jun 2017 20:47:03 -0700</lastBuildDate>
     
 	<atom:link href="https://pkhanal.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Akka</title>
+      <link>https://pkhanal.github.io/tags/akka/</link>
+      <pubDate>Wed, 28 Jun 2017 20:47:03 -0700</pubDate>
+      <author>prashantkhanal@gmail.com (Prashant Khanal)</author>
+      <guid>https://pkhanal.github.io/tags/akka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Cognitive</title>
       <link>https://pkhanal.github.io/tags/cognitive/</link>
-      <pubDate>Thu, 25 May 2017 19:10:32 -0700</pubDate>
+      <pubDate>Wed, 28 Jun 2017 20:47:03 -0700</pubDate>
       <author>prashantkhanal@gmail.com (Prashant Khanal)</author>
       <guid>https://pkhanal.github.io/tags/cognitive/</guid>
       <description></description>
@@ -24,16 +33,34 @@
     <item>
       <title>Java</title>
       <link>https://pkhanal.github.io/tags/java/</link>
-      <pubDate>Thu, 25 May 2017 19:10:32 -0700</pubDate>
+      <pubDate>Wed, 28 Jun 2017 20:47:03 -0700</pubDate>
       <author>prashantkhanal@gmail.com (Prashant Khanal)</author>
       <guid>https://pkhanal.github.io/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Lightbend</title>
+      <link>https://pkhanal.github.io/tags/lightbend/</link>
+      <pubDate>Wed, 28 Jun 2017 20:47:03 -0700</pubDate>
+      <author>prashantkhanal@gmail.com (Prashant Khanal)</author>
+      <guid>https://pkhanal.github.io/tags/lightbend/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Play</title>
+      <link>https://pkhanal.github.io/tags/play/</link>
+      <pubDate>Wed, 28 Jun 2017 20:47:03 -0700</pubDate>
+      <author>prashantkhanal@gmail.com (Prashant Khanal)</author>
+      <guid>https://pkhanal.github.io/tags/play/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Watson</title>
       <link>https://pkhanal.github.io/tags/watson/</link>
-      <pubDate>Thu, 25 May 2017 19:10:32 -0700</pubDate>
+      <pubDate>Wed, 28 Jun 2017 20:47:03 -0700</pubDate>
       <author>prashantkhanal@gmail.com (Prashant Khanal)</author>
       <guid>https://pkhanal.github.io/tags/watson/</guid>
       <description></description>

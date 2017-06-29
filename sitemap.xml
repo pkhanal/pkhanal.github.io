@@ -2,18 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://pkhanal.github.io/post/add-cognitive-capability-to-play-application/</loc>
+    <lastmod>2017-06-28T20:47:03-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://pkhanal.github.io/post/reactive-watson-api-java/</loc>
     <lastmod>2017-05-25T19:10:32-07:00</lastmod>
   </url>
   
   <url>
     <loc>https://pkhanal.github.io/</loc>
-    <lastmod>2017-05-25T19:10:32-07:00</lastmod>
+    <lastmod>2017-06-28T20:47:03-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://pkhanal.github.io/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://pkhanal.github.io/tags/akka/</loc>
+    <lastmod>2017-06-28T20:47:03-07:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -23,31 +34,43 @@
   
   <url>
     <loc>https://pkhanal.github.io/tags/cognitive/</loc>
-    <lastmod>2017-05-25T19:10:32-07:00</lastmod>
+    <lastmod>2017-06-28T20:47:03-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://pkhanal.github.io/tags/java/</loc>
-    <lastmod>2017-05-25T19:10:32-07:00</lastmod>
+    <lastmod>2017-06-28T20:47:03-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://pkhanal.github.io/tags/lightbend/</loc>
+    <lastmod>2017-06-28T20:47:03-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://pkhanal.github.io/tags/play/</loc>
+    <lastmod>2017-06-28T20:47:03-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://pkhanal.github.io/post/</loc>
-    <lastmod>2017-05-25T19:10:32-07:00</lastmod>
+    <lastmod>2017-06-28T20:47:03-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://pkhanal.github.io/tags/</loc>
-    <lastmod>2017-05-25T19:10:32-07:00</lastmod>
+    <lastmod>2017-06-28T20:47:03-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://pkhanal.github.io/tags/watson/</loc>
-    <lastmod>2017-05-25T19:10:32-07:00</lastmod>
+    <lastmod>2017-06-28T20:47:03-07:00</lastmod>
     <priority>0</priority>
   </url>
   

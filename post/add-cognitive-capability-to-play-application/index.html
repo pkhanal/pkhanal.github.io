@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Add Cognitive Capability into Akka Play Application</title>
+  <meta property="og:title" content="Add Cognitive Capability into Akka Play Application" />
+  <meta name="twitter:title" content="Add Cognitive Capability into Akka Play Application" />
+  <meta name="description" content="Leverage IBM Watson Java SDK from Play Application">
+  <meta property="og:description" content="Leverage IBM Watson Java SDK from Play Application">
+  <meta name="twitter:description" content="Leverage IBM Watson Java SDK from Play Application">
+  <meta name="author" content="Prashant Khanal"/>
+  <link href='https://pkhanal.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://pkhanal.github.io/img/avatar-icon.png" />
+  <meta name="twitter:image" content="https://pkhanal.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@ipras" />
+  <meta name="twitter:creator" content="@ipras" />
+  <meta property="og:url" content="https://pkhanal.github.io/post/add-cognitive-capability-to-play-application/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="" />
+
+  <meta name="generator" content="Hugo 0.20.7" />
+  <link rel="canonical" href="https://pkhanal.github.io/post/add-cognitive-capability-to-play-application/" />
+  <link rel="alternate" href="https://pkhanal.github.io/index.xml" type="application/rss+xml" title="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pkhanal.github.io/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://pkhanal.github.io/css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://pkhanal.github.io/css/highlight.min.css" />
+
+
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://pkhanal.github.io"></a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="" href="https://pkhanal.github.io">
+            <img class="avatar-img" src="https://pkhanal.github.io/img/avatar-icon.png" alt="" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Add Cognitive Capability into Akka Play Application</h1>
+                
+                  
+                    <h2 class="post-subheading">Leverage IBM Watson Java SDK from Play Application</h2>
+                  
+                
+                
+                  <span class="post-meta">
+  Posted on June 28, 2017
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>As a Software Engineer and Dev Advocate for IBM Cloud and Watson platform, we are always looking for new ways to build cloud-native cognitive solution leveraging IBM Watson Platform in collaboration with external technologies. I am really excited about this morning’s <a href="https://developer.ibm.com/dwblog/2017/ibm-lightbend-scala/"><u>announcement</u></a> from IBM regarding a new collaborative development initiative with <a href="https://www.lightbend.com/"><u>Lightbend</u></a>. The joint effort will provide developers a single stop solution for building and deploying distributed cognitive application both on premises and in the cloud.</p>
+
+<p></p>
+
+<p>Although I use IBM Cloud &amp; Watson Platform day in and day out, I haven’t really worked on Lightbend Reactive Platform that comprises of <a href="https://www.lightbend.com/platform/development/akka">Akka</a>, <a href="https://www.lightbend.com/platform/development/play-framework">Play</a> and <a href="https://www.lightbend.com/platform/development/lagom-framework">Lagom</a>. As a developer, the best way to find out is to start building something simple out of those technologies and take it from there. The rest of the blog discusses the technical recipes to add a cognitive capability to Java based Play application with the help of online documentation and other resources about Lightbend Reactive Platform. For the purpose of this blog, we will use <a href="https://github.com/watson-developer-cloud/java-sdk">Watson Java SDK</a> from within the Play application to add the cognitive capability.</p>
+
+<p>The sample project for this blog post is available in <a href="https://github.com/pkhanal/lightbend-watson-integration">Github</a>.</p>
+
+<p>First, let’s review the architecture.</p>
+
+<p><img src="/img/architecture.jpg?raw=true" alt="Architecture" title="Architecture" /></p>
+
+<p>In the above application, each asynchronous call to a watson cognitive service is encapsulated to an Akka Actor. Actor is capable of much more than just encapsulating a behavior to process a message that it receives. For more details on Akka Actor, I would recommend going though the following <a href="http://doc.akka.io/docs/akka/current/java/actors.html">doc</a>. The following <a href="https://www.youtube.com/watch?v=6Cb1wSVRI-Q">talk</a>a from Jonas Bonér provides a great explanation on Akka Actor from the perspective of reactive system.</p>
+
+<h3 id="get-started">Get Started</h3>
+
+<p>The following <a href="https://github.com/playframework/play-java-starter-example/tree/2.6.x">starter</a> project is a great way to get started with Java based Play application. You can clone the project and import into your IDE (Intellij, Eclipse..) of your choice. For details on how to import the project into your IDE, take a look the the following <a href="https://www.playframework.com/documentation/2.6.x/IDE">doc</a>. Once you follow the steps, you should be able to run/debug the application from your IDE.</p>
+
+<h3 id="add-watson-java-sdk-dependency">Add Watson Java SDK Dependency</h3>
+
+<p>In order to add a dependency to Watson Visual Recognition and Language, we will add the dependencies to Java SDK for <a href="https://github.com/watson-developer-cloud/java-sdk/tree/develop/visual-recognition">Visual Recognition Service</a> and <a href="https://github.com/watson-developer-cloud/java-sdk/tree/develop/language-translation">Language Translator Service</a> in the <a href="https://github.com/pkhanal/lightbend-watson-integration/blob/master/build.sbt">build.sbt</a> file as shown below.</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="n">libraryDependencies</span> <span class="o">++=</span> <span class="n">Seq</span><span class="o">(</span>
+  <span class="s">&quot;com.ibm.watson.developer_cloud&quot;</span> <span class="o">%</span> <span class="s">&quot;language-translator&quot;</span> <span class="o">%</span> <span class="s">&quot;3.8.0&quot;</span><span class="o">,</span>
+  <span class="s">&quot;com.ibm.watson.developer_cloud&quot;</span> <span class="o">%</span> <span class="s">&quot;visual-recognition&quot;</span> <span class="o">%</span> <span class="s">&quot;3.8.0&quot;</span>
+<span class="o">)</span>
+</code></pre></div>
+
+
+<h3 id="add-watson-credentials-to-the-application-settings">Add Watson Credentials to the Application Settings</h3>
+
+<p>Follow the steps provided in the following link to obtain the credentials of the services (Visual Recognition &amp; Language Translator) for the project. Then create a watson.conf file under the <a href="https://github.com/pkhanal/lightbend-watson-integration/tree/master/conf">conf</a> directory of the starter project where we will specify the service credentials/key as shown below.</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="err">#</span> <span class="n">application</span> <span class="n">specific</span> <span class="n">settings</span>
+<span class="err">#</span> <span class="n">copy</span> <span class="n">credentials</span> <span class="n">from</span> <span class="n">visual</span> <span class="n">recognition</span> <span class="o">&amp;</span> <span class="n">language</span> <span class="n">translation</span> <span class="n">services</span>
+<span class="n">watson</span> <span class="o">{</span>
+  <span class="n">translation</span> <span class="o">{</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+  <span class="o">},</span>
+  <span class="n">visual_recognition</span> <span class="o">{</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+
+<p>We will then import the watson.conf file in the <a href="https://github.com/pkhanal/lightbend-watson-integration/blob/master/conf/application.conf">application.conf</a> file as shown below.</p>
+
+<pre><code>include &quot;watson.conf&quot;
+</code></pre>
+
+<p>You can find detail information on the Akka configuration from the following link.
+<a href="http://doc.akka.io/docs/akka/2.5.3/java/general/configuration.html">http://doc.akka.io/docs/akka/2.5.3/java/general/configuration.html</a></p>
+
+<p>As recommended by the Akka doc, we will place application <a href="http://doc.akka.io/docs/akka/2.5.3/java/extending-akka.html#extending-akka-settings">specific settings in an Extension.</a></p>
+
+<p>For that, we will create <a href="https://github.com/pkhanal/lightbend-watson-integration/blob/master/app/settings/SettingsImpl.java">SettingsImpl.java</a> class under the package settings as shown below.</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">package</span> <span class="nn">settings</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">akka.actor.Extension</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.typesafe.config.Config</span><span class="o">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SettingsImpl</span> <span class="kd">implements</span> <span class="n">Extension</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">WATSON_TRANSLATOR_USERNAME</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">WATSON_TRANSLATOR_PASSWORD</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">WATSON_VISUAL_RECOGNITION_KEY</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">SettingsImpl</span><span class="o">(</span><span class="n">Config</span> <span class="n">config</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">WATSON_TRANSLATOR_USERNAME</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;watson.translation.username&quot;</span><span class="o">);</span>
+        <span class="n">WATSON_TRANSLATOR_PASSWORD</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;watson.translation.password&quot;</span><span class="o">);</span>
+        <span class="n">WATSON_VISUAL_RECOGNITION_KEY</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;watson.visual_recognition.key&quot;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div>
+
+
+<p>Add <a href="https://github.com/pkhanal/lightbend-watson-integration/blob/master/app/settings/Settings.java">Settings.java</a> class as well under the package settings as shown below:</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">package</span> <span class="nn">settings</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">akka.actor.AbstractExtensionId</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">akka.actor.ExtendedActorSystem</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">akka.actor.ExtensionIdProvider</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Settings</span> <span class="kd">extends</span> <span class="n">AbstractExtensionId</span><span class="o">&lt;</span><span class="n">SettingsImpl</span><span class="o">&gt;</span>
+        <span class="kd">implements</span> <span class="n">ExtensionIdProvider</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kd">static</span> <span class="n">Settings</span> <span class="n">SettingsProvider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Settings</span><span class="o">();</span>
+
+    <span class="kd">private</span> <span class="nf">Settings</span><span class="o">()</span> <span class="o">{}</span>
+
+    <span class="kd">public</span> <span class="n">Settings</span> <span class="nf">lookup</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">Settings</span><span class="o">.</span><span class="na">SettingsProvider</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">SettingsImpl</span> <span class="nf">createExtension</span><span class="o">(</span><span class="n">ExtendedActorSystem</span> <span class="n">system</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">SettingsImpl</span><span class="o">(</span><span class="n">system</span><span class="o">.</span><span class="na">settings</span><span class="o">().</span><span class="na">config</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+
+<p>We will late use the application settings defined in configuration file through SettingsImpl &amp; Settings classes in Actor classes.</p>
+
+<h3 id="define-actors">Define Actors</h3>
+
+<p>We will create Actor that encapsulates behavior of corresponding Watson Service. Below is a <a href="https://github.com/pkhanal/lightbend-watson-integration/blob/master/app/actors/ImageClassifier.java">visual recognition actor</a> that given an image url, will classify the image and detect faces in the image using Watson Java SDK for visual recognition.</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">package</span> <span class="nn">actors</span><span class="o">;</span>
+
+
+<span class="kn">import</span> <span class="nn">akka.actor.Props</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">akka.actor.UntypedAbstractActor</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyImagesOptions</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassification</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">settings.Settings</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">settings.SettingsImpl</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ImageClassifier</span> <span class="kd">extends</span> <span class="n">UntypedAbstractActor</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">VisualRecognition</span> <span class="n">service</span><span class="o">;</span>
+
+    <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">SettingsImpl</span> <span class="n">settings</span> <span class="o">=</span>
+                <span class="n">Settings</span><span class="o">.</span><span class="na">SettingsProvider</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">getContext</span><span class="o">().</span><span class="na">getSystem</span><span class="o">());</span>
+
+        <span class="c1">// https://github.com/watson-developer-cloud/java-sdk/tree/develop/language-translator</span>
+        <span class="n">service</span> <span class="o">=</span> <span class="k">new</span> <span class="n">VisualRecognition</span><span class="o">(</span><span class="n">VisualRecognition</span><span class="o">.</span><span class="na">VERSION_DATE_2016_05_20</span><span class="o">);</span>
+        <span class="n">service</span><span class="o">.</span><span class="na">setApiKey</span><span class="o">(</span><span class="n">settings</span><span class="o">.</span><span class="na">WATSON_VISUAL_RECOGNITION_KEY</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Props</span> <span class="nf">getProps</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">Props</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">ImageClassifier</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onReceive</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">ImageClassifier</span><span class="o">.</span><span class="na">Message</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Message</span> <span class="n">message</span> <span class="o">=</span> <span class="o">(</span><span class="n">Message</span><span class="o">)</span> <span class="n">o</span><span class="o">;</span>
+            <span class="n">ClassifyImagesOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassifyImagesOptions</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+                    <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="n">message</span><span class="o">.</span><span class="na">imageUrl</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+            <span class="n">VisualClassification</span> <span class="n">result</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="na">classify</span><span class="o">(</span><span class="n">options</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+            <span class="n">sender</span><span class="o">().</span><span class="na">tell</span><span class="o">(</span><span class="n">result</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">getSelf</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="c1">// protocol</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Message</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">imageUrl</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">Message</span><span class="o">(</span><span class="n">String</span> <span class="n">imageUrl</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">imageUrl</span> <span class="o">=</span> <span class="n">imageUrl</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="s">&quot;Image Url: &quot;</span> <span class="o">+</span> <span class="n">imageUrl</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+
+<p>Notice here that the <strong>ImageClassifier</strong> defines a static method called <strong>getProps</strong>, this method returns a <strong>Props</strong> object that describes how to create the actor. This is a good Akka convention, to separate the instantiation logic from the code that creates the actor.
+Another best practice shown here is that the messages that ImageClassifier receives are defined as static inner classes called <strong>Message</strong>. It serves as a protocol of the message to send to the ImageClassifier actor. All the details on the Akka Actor can be read from the <a href="http://doc.akka.io/docs/akka/current/java/actors.html">doc</a>.</p>
+
+<h3 id="define-rest-endpoint">Define REST Endpoint</h3>
+
+<p>Now that we have defined an Actor and encapsulated a behavior, we can now create a REST endpoint for client to consume Actor’s behavior over the web through HTTP Request. We can create a REST Endpoint by defining a <a href="https://github.com/pkhanal/lightbend-watson-integration/blob/master/app/controllers/VisualRecognitionController.java">Controller</a> that creates and uses the ImageClassifier actor.</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">package</span> <span class="nn">actors</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">akka.actor.Props</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">akka.actor.UntypedAbstractActor</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyImagesOptions</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassification</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">settings.Settings</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">settings.SettingsImpl</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ImageClassifier</span> <span class="kd">extends</span> <span class="n">UntypedAbstractActor</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">VisualRecognition</span> <span class="n">service</span><span class="o">;</span>
+
+    <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">SettingsImpl</span> <span class="n">settings</span> <span class="o">=</span>
+                <span class="n">Settings</span><span class="o">.</span><span class="na">SettingsProvider</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">getContext</span><span class="o">().</span><span class="na">getSystem</span><span class="o">());</span>
+
+        <span class="c1">// https://github.com/watson-developer-cloud/java-sdk/tree/develop/language-translator</span>
+        <span class="n">service</span> <span class="o">=</span> <span class="k">new</span> <span class="n">VisualRecognition</span><span class="o">(</span><span class="n">VisualRecognition</span><span class="o">.</span><span class="na">VERSION_DATE_2016_05_20</span><span class="o">);</span>
+        <span class="n">service</span><span class="o">.</span><span class="na">setApiKey</span><span class="o">(</span><span class="n">settings</span><span class="o">.</span><span class="na">WATSON_VISUAL_RECOGNITION_KEY</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Props</span> <span class="nf">getProps</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">Props</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">ImageClassifier</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onReceive</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Throwable</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="n">ImageClassifier</span><span class="o">.</span><span class="na">Message</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Message</span> <span class="n">message</span> <span class="o">=</span> <span class="o">(</span><span class="n">Message</span><span class="o">)</span> <span class="n">o</span><span class="o">;</span>
+            <span class="n">ClassifyImagesOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassifyImagesOptions</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+                    <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="n">message</span><span class="o">.</span><span class="na">imageUrl</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+            <span class="n">VisualClassification</span> <span class="n">result</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="na">classify</span><span class="o">(</span><span class="n">options</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+            <span class="n">sender</span><span class="o">().</span><span class="na">tell</span><span class="o">(</span><span class="n">result</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">getSelf</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="c1">// protocol</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Message</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">imageUrl</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">Message</span><span class="o">(</span><span class="n">String</span> <span class="n">imageUrl</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">imageUrl</span> <span class="o">=</span> <span class="n">imageUrl</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="s">&quot;Image Url: &quot;</span> <span class="o">+</span> <span class="n">imageUrl</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+
+<p>The ActorSystem is used to create and/or use an actor. The basic functionality available with Actor is to send a message for computation or processing. There are two patterns for that:</p>
+
+<ul>
+<li>tell pattern where there is no response from actor. it’s a fire and forget scenario.</li>
+<li>ask pattern where actor sends response as Future object. This pattern is used when sending message to actor from a REST endpoint where client expects the response. The ask pattern returns a Scala Future, which you can convert to a Java CompletionStage using scala.compat.java8.FutureConverts.toJava, and then map to your own result type.</li>
+</ul>
+
+<h3 id="add-routes">Add Routes</h3>
+
+<p>The final step is to add routes for the rest endpoint. Add the following route in routes file for image classification as shown below:</p>
+
+<pre><code># Image Classification controller that classifies image in the given image url and detect faces
+GET    /imageClassification         controllers.VisualRecognitionController.classifyImage(imageUrl:String)
+</code></pre>
+
+<h3 id="test-rest-endpoint-with-curl-command">Test RESt endpoint with curl command</h3>
+
+<p>Now we can run the play application and test image classification REST endpoint through following command:</p>
+
+<pre><code>curl -G &quot;http://localhost:9000/imageClassification” --data-urlencode “imageUrl=https://visual-recognition-demo.mybluemix.net/images/samples/5.jpg&quot;
+</code></pre>
+
+<p>You will see the following response message in the console:</p>
+
+<pre><code>
+  &quot;images&quot;: [
+    {
+      &quot;classifiers&quot;: [
+        {
+          &quot;classes&quot;: [
+            {
+              &quot;class&quot;: &quot;Chihuahua dog&quot;,
+              &quot;score&quot;: 0.944,
+              &quot;type_hierarchy&quot;: &quot;/domestic animal/small dog/Chihuahua dog&quot;
+            },
+           {
+              &quot;class&quot;: &quot;small dog&quot;,
+              &quot;score&quot;: 0.961
+            },
+            {
+              &quot;class&quot;: &quot;dog&quot;,
+              &quot;score&quot;: 0.962
+            }
+            …
+
+</code></pre>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>All in all, I had fun trying this out since my goal was to get something up and running in a quick time. Although, the recipe may not be the production ready but it did help me to understand the bits and pieces of Lightbend Reactive Platform and gave me a good foundation to take it to the next level. Though I didn’t show the actor that encapsulates the language translation behavior via watson language translator service, the pattern is similar to what we did for Visual Recognition. You can find the full source code in the <a href="https://github.com/pkhanal/lightbend-watson-integration">GitHub project</a>.</p>
+
+<h3 id="resources">Resources</h3>
+
+<p><a href="https://github.com/pkhanal/lightbend-watson-integration">https://github.com/pkhanal/lightbend-watson-integration</a>
+<a href="http://doc.akka.io/docs/akka/current/java/actors.html">http://doc.akka.io/docs/akka/current/java/actors.html</a>
+<a href="https://www.playframework.com/documentation/2.5.x/IDE">https://www.playframework.com/documentation/2.5.x/IDE</a>
+<a href="https://www.playframework.com/documentation/2.6.x/JavaAkka">https://www.playframework.com/documentation/2.6.x/JavaAkka</a>
+<a href="https://www.ibm.com/watson/developercloud/visual-recognition.html">https://www.ibm.com/watson/developercloud/visual-recognition.html</a>
+<a href="https://www.ibm.com/watson/developercloud/language-translator.html">https://www.ibm.com/watson/developercloud/language-translator.html</a></p>
+      </article>
+
+      <ul class="pager blog-pager">
+        
+          <li class="previous">
+            <a href="https://pkhanal.github.io/post/reactive-watson-api-java/" data-toggle="tooltip" data-placement="top" title="Reactive Cognitive API">&larr; Previous Post</a>
+          </li>
+        
+        
+      </ul>
+
+      
+        
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:prashantkhanal@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/pkhanal" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/ipras" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/iprashant" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/1718403/prashant" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.20.7</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://pkhanal.github.io/js/main.js"></script>
+<script src="https://pkhanal.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> renderMathInElement(document.body); </script>
+
+
+
+
+
+
+  </body>
+</html>
+
