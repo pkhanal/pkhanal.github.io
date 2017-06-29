@@ -146,7 +146,15 @@
 
 <p><img src="/img/architecture.jpg?raw=true" alt="Architecture" title="Architecture" /></p>
 
-<p>In the above application, each asynchronous call to a watson cognitive service is encapsulated to an Akka Actor. Actor is capable of much more than just encapsulating a behavior to process a message that it receives. For more details on Akka Actor, I would recommend going though the following <a href="http://doc.akka.io/docs/akka/current/java/actors.html">doc</a>. The following <a href="https://www.youtube.com/watch?v=6Cb1wSVRI-Q">talk</a>a from Jonas Bonér provides a great explanation on Akka Actor from the perspective of reactive system.</p>
+<p>The play application exposes following REST endpoints:</p>
+
+<p><strong>/imageClassification?imageUrl=&lt;image_url&gt;</strong><BR />
+classify an image i.e. identify objects in an image leveraging <a href="https://www.ibm.com/watson/developercloud/visual-recognition.html">Watson Visual Recognition</a>. Watson Visual Recognition enables developer to classify image content using machine learning.</p>
+
+<p><strong>/translation?text=&lt;text&gt;&amp;from=&lt;source_langauge&gt;&amp;to=&lt;target_langauge&gt;</strong><BR />
+translates given text to target language using <a href="">Watson Lanugage Translator</a></p>
+
+<p>In the above application, each asynchronous call to a watson cognitive service is encapsulated to an Akka Actor. Actor is capable of much more than just encapsulating a behavior to process a message that it receives. For more details on Akka Actor, I would recommend going though the following <a href="http://doc.akka.io/docs/akka/current/java/actors.html">doc</a>. The following <a href="https://www.youtube.com/watch?v=6Cb1wSVRI-Q">talk</a> from Jonas Bonér provides a great explanation on Akka Actor from the perspective of reactive system.</p>
 
 <h3 id="get-started">Get Started</h3>
 
